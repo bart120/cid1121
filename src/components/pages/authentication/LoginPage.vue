@@ -1,17 +1,11 @@
 <template>
     <h1>Connexion</h1>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" novalidate>
         <div>
-            <span class="p-float-label">
-                <InputText id="email" type="email" />
-                <label for="email">Login</label>
-            </span>
+           <InputCid label="Login" type="email" v-model="user.login" />
         </div>
         <div>
-            <span class="p-float-label">
-                <InputText id="password" type="password" />
-                <label for="password">Mot de passe</label>
-            </span>
+          <InputCid label="Mot de passe" type="password" v-model="user.password" />
         </div>
 
         <div>
@@ -22,19 +16,23 @@
 <script setup>
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
+import InputCid from '../../core/input/InputCid.vue';
 </script>
 <script>
 export default {
     components:{
         Button,
-        InputText
+        InputText,
+        InputCid
     },
     methods:{
         submit(){
             //ev.preventDefault();
-            
-            console.log("test");
+            console.log("user ", this.user);
         }
+    },
+    data(){
+        return {user: {login: '', password: ''}};
     }
 }
 </script>
