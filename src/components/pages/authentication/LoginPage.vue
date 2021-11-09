@@ -2,7 +2,7 @@
     <h1>Connexion</h1>
     <form @submit.prevent="submit" novalidate>
         <div>
-           <InputCid label="Login" type="email" v-model="user.login" />
+           <InputMail label="Login" v-model="user.login" />
         </div>
         <div>
           <InputCid label="Mot de passe" type="password" v-model="user.password" />
@@ -17,13 +17,15 @@
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import InputCid from '../../core/input/InputCid.vue';
+import InputMail from '../../core/input/InputMail.vue';
 </script>
 <script>
 export default {
     components:{
         Button,
         InputText,
-        InputCid
+        InputCid,
+        InputMail
     },
     methods:{
         submit(){
