@@ -2,7 +2,7 @@
     <h1>Connexion</h1>
     <form @submit.prevent="submit" novalidate>
         <div>
-           <InputMail label="Login" v-model="user.login" />
+           <InputMail label="Login" v-model="user.login" @status-change="mailChangeStatus" />
         </div>
         <div>
           <InputCid label="Mot de passe" type="password" v-model="user.password" />
@@ -31,6 +31,9 @@ export default {
         submit(){
             //ev.preventDefault();
             console.log("user ", this.user);
+        },
+        mailChangeStatus(status){
+            console.log('mail change', status);
         }
     },
     data(){

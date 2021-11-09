@@ -18,12 +18,19 @@ export default {
     },
     watch:{
         value(newVal, oldVal){
-            validate(newVal);
+            this.validate(newVal);
         }
     },
+    emits:['statusChange'],
     methods:{
         validate(mail){
-
+            if(mail != '' && ! regMail.test(mail)){
+                this.valid = false;
+                this.$emit('statusChange', "KO");
+                return;
+            }
+            this.valid = true;
+            this.$emit('statusChange', "OK");
         }
     }
 }
