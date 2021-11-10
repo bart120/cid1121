@@ -43,7 +43,7 @@ export default {
                     icon: 'pi pi-fw pi-file',
                     to: '/'
                 },{
-                    label: 'Voiture',
+                    label: this.$t('menu.cars'),
                     items:[
                         {label: 'Ajouter', to:'/cars/add'},
                         {label: 'Lister', to: '/cars/list'},

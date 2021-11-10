@@ -1,5 +1,5 @@
 <template>
-    <h1>Ajouter une voiture</h1>
+    <h1> {{ $t('cars.title_add') }} </h1>
     <form novalidate @submit.prevent="submit">
         <div>
             <input-cid label="Modèle" type="text" v-model="car.model" />
