@@ -21,25 +21,23 @@
     </form>
 </template>
 <script setup>
-    import Button from 'primevue/button';
+    
     import InputCid from '../../core/input/InputCid.vue';
     import Calendar from 'primevue/calendar';
-    import Dropdown from 'primevue/dropdown';
-    import BrandService from '../../../services/BrandService';
+    import Button from 'primevue/button';
     import CarService from '../../../services/CarService';
+    import {brandsMixin} from '../../../mixins/BrandsMixin';
 </script>
 <script>
-const bs = new BrandService();
 const cs = new CarService();
 export default {
     components:{
         Button,
         InputCid,
-        Calendar,
-        Dropdown
+        Calendar
     },
     data(){
-        return {car:{}, brands: []};
+        return {car:{}};
     },
     methods:{
         submit(){
@@ -48,8 +46,11 @@ export default {
                 alert(`La voiture a été enregistrée avec l'ID ${data.id}`));
         }
     },
+    mixins:[
+        brandsMixin
+    ],
     mounted(){
-        bs.getBrands().then(data => this.brands = data);
+        console.log('caradd mounted');
     }
 }
 </script>
