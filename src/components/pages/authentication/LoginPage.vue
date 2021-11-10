@@ -18,6 +18,7 @@ import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import InputCid from '../../core/input/InputCid.vue';
 import InputMail from '../../core/input/InputMail.vue';
+import {mapActions} from 'vuex';
 </script>
 <script>
 export default {
@@ -28,9 +29,13 @@ export default {
         InputMail
     },
     methods:{
+        ...mapActions(['login']),
         submit(){
             //ev.preventDefault();
-            console.log("user ", this.user);
+            //console.log("user ", this.user);
+            //sessionStorage.setItem('USER', JSON.stringify(this.user));
+           // this.$store.dispatch('login', this.user.login, this.user.password);
+           this.login(this.user.login, this.user.password);
         },
         mailChangeStatus(status){
             console.log('mail change', status);

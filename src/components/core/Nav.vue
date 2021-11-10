@@ -2,7 +2,13 @@
     <nav>
         <Menubar :model="items">
             <template #end>
-                <router-link to='/login'>Se connecter</router-link>
+                <div v-if="! isConnected">
+                    <router-link to='/login'>Se connecter</router-link>
+                </div>
+                <div v-else>
+                    Bonjour {{user.name}}
+                    <Button type="button" @click="logout">Se déconnecter</Button>
+                </div>
             </template>
         </Menubar>
     </nav>
@@ -11,11 +17,23 @@
 
 <script setup>
 import Menubar from 'primevue/menubar';
+import Button from 'primevue/button';
+import {mapGetters, mapActions} from 'vuex';
 </script>
 <script>
 export default {
     components:{
-        Menubar
+        Menubar,
+        Button
+    },
+    computed:{
+        ...mapGetters(['user', 'isConnected'])
+    },
+    methods:{
+        ...mapActions(['logout']),
+        /*deco(){
+            this.logout();
+        }*/
     },
     data(){
         return {
@@ -33,7 +51,13 @@ export default {
                     ]
                 }
             ]
+            //user:null
         };
+    },
+    mounted(){
+        console.log(this);
+        console.log(this.$store)
+        //this.user = JSON.parse(sessionStorage.getItem('USER'));
     }
 }
 </script>
