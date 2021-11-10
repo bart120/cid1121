@@ -14,6 +14,7 @@ export default class CarService {
     }
 
     insertCar(car) {
+        car.price = +car.price;
         return axios.post(URL, car).then(resp => {
             return Promise.resolve(resp.data);
         });
